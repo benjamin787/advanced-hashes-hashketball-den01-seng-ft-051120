@@ -190,6 +190,7 @@ def big_shoe_rebounds
     if guy[:shoe] > memo
       memo = guy[:shoe]
     end 
+    memo
   }
 end 
 
