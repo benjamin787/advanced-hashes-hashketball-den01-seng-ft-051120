@@ -181,9 +181,7 @@ def player_numbers(team)
 end 
 
 def player_stats(name)
-  stats = guys_hash(name)[0]
-  stats.shift
-  stats 
+  guys_hash(name)[0]
 end 
 
 
