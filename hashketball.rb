@@ -199,7 +199,7 @@ def big_shoe_rebounds
       guy[:shoe] == shoe 
     }
   end
-  binding.pry
+  guys_hash[[0][:rebounds]
 end 
 
 
