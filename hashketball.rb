@@ -127,6 +127,10 @@ def game_hash
   }
 end
 
+def guys_hash
+  
+end 
+
 def num_points_scored(name)
   guys_hash = game_hash[:home][:players].select { |guy|
     guy[:player_name] == name 
