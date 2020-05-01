@@ -1,4 +1,5 @@
-# Write your code below game_hash
+require "pry"
+
 def game_hash
   {
     home: {
@@ -126,4 +127,71 @@ def game_hash
   }
 end
 
-# Write code here
+def num_points_scored(name)
+  guys_hash = game_hash[:home][:players].select { |guy|
+    guy[:player_name] == name 
+  }
+  if guys_hash == []
+    guys_hash = game_hash[:away][:players].select { |guy|
+      guy[:player_name] == name
+    }
+  end 
+  guys_hash[0][:points]
+end
+
+def shoe_size(name)
+   guys_hash = game_hash[:home][:players].select { |guy|
+    guy[:player_name] == name 
+  }
+  if guys_hash == []
+    guys_hash = game_hash[:away][:players].select { |guy|
+      guy[:player_name] == name
+    }
+  end 
+  guys_hash[0][:shoe]
+end 
+
+def team_colors(team)
+  if game_hash[:home][:team_name] == team
+    colorss = game_hash[:home][:colors]
+  else 
+    colorss = game_hash[:away][:colors]
+  end 
+  colorss
+end 
+
+def team_names
+  teams = [
+    game_hash[:home][:team_name],
+    game_hash[:away][:team_name]
+    ]
+end 
+
+def player_numbers(team)
+  numbers = []
+  i = 0 
+  if game_hash[:home][:team_name] == team 
+    while i < 5 
+      numbers << game_hash[:home][:players][i][:number]
+      i += 1 
+    end 
+  else 
+    while i < 5 
+      numbers << game_hash[:away][:players][i][:number]
+      i += 1 
+    end 
+  end 
+  numbers 
+end 
+
+def player_stats(name)
+  
+end 
+
+
+
+
+
+
+
+
