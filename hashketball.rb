@@ -144,15 +144,7 @@ def num_points_scored(name)
 end
 
 def shoe_size(name)
-   guys_hash = game_hash[:home][:players].select { |guy|
-    guy[:player_name] == name 
-  }
-  if guys_hash == []
-    guys_hash = game_hash[:away][:players].select { |guy|
-      guy[:player_name] == name
-    }
-  end 
-  guys_hash[0][:shoe]
+  guys_hash(name)[0][:shoe]
 end 
 
 def team_colors(team)
