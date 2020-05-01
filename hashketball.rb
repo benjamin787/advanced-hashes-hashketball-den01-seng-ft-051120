@@ -210,14 +210,28 @@ def big_shoe_rebounds
 end 
 
 def most_points_scored
-  guys_hash = game_hash[:home][:players].select { |guy|
-    guy[:player_name] == name 
+  most_home = game_hash[:home][:players].reduce(0) { |guy|
+    if guy[:points] > memo
+      memo = guy[:points]
+    end
+    memo
   }
-  if guys_hash == []
-    guys_hash = game_hash[:away][:players].select { |guy|
-      guy[:player_name] == name
+  most_away = game_hash[:away][:players].reduce(0) { |guy|
+    if guy[:points] > memo
+      memo = guy[:points]
+    end
+    memo
+  }
+  if most_away > most_home
+     guys_hash = game_hash[:away][:players].select { |guy|
+      guy[:points] == most_away
     }
-  end
+  else 
+    guys_hash = game_hash[:home][:players].select { |guy|
+      guy[:points] == most_home 
+    }
+  end 
+  guys_hash[0][:player_name]
 end 
 
 
