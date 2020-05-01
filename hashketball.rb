@@ -185,20 +185,27 @@ def player_stats(name)
 end 
 
 def big_shoe_rebounds
-  shoe = game_hash[:home][:players].reduce(0) { |memo, guy|
+  big_home = game_hash[:home][:players].reduce(0) { |memo, guy|
     if guy[:shoe] > memo
       memo = guy[:shoe]
     end 
     memo
   }
-  guys_hash = game_hash[:home][:players].select { |guy|
-    guy[:shoe] == shoe 
+  big_away = game_hash[:away][:players].reduce(0) { |memo, guy|
+    if guy[:shoe] > memo
+      memo = guy[:shoe]
+    end 
+    memo
   }
-  if guys_hash == []
+  if big_away > big_home
     guys_hash = game_hash[:away][:players].select { |guy|
-      guy[:shoe] == shoe 
+      guy[:shoe] == big_away
     }
-  end
+  else 
+    guys_hash = game_hash[:home][:players].select { |guy|
+      guy[:shoe] == big_home 
+    }
+  end 
   guys_hash[0][:rebounds]
 end 
 
