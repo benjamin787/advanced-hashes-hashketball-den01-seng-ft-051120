@@ -184,7 +184,14 @@ def player_stats(name)
   guys_hash(name)[0]
 end 
 
-
+def big_shoe_rebounds
+  game_hash[:home][:players].reduce { |memo, guy|
+    memo = guy[:shoe] if !memo
+    if guy[:shoe] > memo
+      memo = guy[:shoe]
+    end 
+  }
+end 
 
 
 
