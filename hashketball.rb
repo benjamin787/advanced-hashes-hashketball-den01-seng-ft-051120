@@ -186,7 +186,6 @@ end
 
 def big_shoe_rebounds
   shoe = game_hash[:home][:players].reduce { |memo, guy|
-    memo = guy[:shoe] if !memo
     if guy[:shoe] > memo
       memo = guy[:shoe]
     end 
