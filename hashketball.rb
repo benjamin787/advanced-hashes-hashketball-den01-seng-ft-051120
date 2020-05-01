@@ -191,6 +191,14 @@ def big_shoe_rebounds
     end 
     memo
   }
+  guys_hash = game_hash[:home][:players].select { |guy|
+    guy[:shoe] == shoe 
+  }
+  if guys_hash == []
+    guys_hash = game_hash[:away][:players].select { |guy|
+      guy[:shoe] == shoe 
+    }
+  end
   binding.pry
 end 
 
